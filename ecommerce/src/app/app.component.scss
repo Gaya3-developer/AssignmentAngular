@@ -1,0 +1,13 @@
+
+@import '../assets/scss/variables';
+.navbar{
+    &-brand{
+        color:$white;
+    }
+    .nav-link{
+        color:$white;
+        &.active{
+            color:$white;
+        }
+    }
+}

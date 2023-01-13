@@ -1,0 +1,12 @@
+<ul class="list-group">
+    <li class="list-group-item" aria-current="true" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}"
+    ><a routerLink="/products">View All Products</a></li>
+    <li class="list-group-item" routerLinkActive="active"><a routerLink="/products/create">Add new product</a></li>
+    <li class="list-group-item" *ngFor="let cat of categoryList">
+      <a href="/products/category/{{cat.id}}">
+          {{ cat.categoryName }}
+      </a>
+    </li>
+  </ul>
+  

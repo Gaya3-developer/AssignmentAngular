@@ -1,0 +1,11 @@
+.list-group-item{
+    a{
+        text-decoration: none;
+    }
+    &.active {
+        a {
+            color: white;
+            text-decoration: none;
+    }
+    }
+}
