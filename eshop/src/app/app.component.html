@@ -14,6 +14,13 @@
 
 
 <app-footer></app-footer> -->
+<!-- loader start -->
+<div class="loader-wrapper" *ngIf="isDisplayed">
+  <div>
+    <img src="../assets/images/loader.gif" alt="loader">
+  </div>
+</div>
+
 <app-header></app-header>
 <section *ngIf="checkUrl()">
  

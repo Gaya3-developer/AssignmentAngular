@@ -1,14 +1,21 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { trigger, state, style, animate, transition } from '@angular/animations';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+ 
 })
 export class AppComponent {
   title = 'eshop';
+  public isDisplayed: boolean = true;
 
+  hideAnimatedDiv() {
+      setTimeout(() => {
+          this.isDisplayed = false;
+      }, 600);
+  }
   constructor(private router: Router){
     }
 
@@ -21,4 +28,7 @@ export class AppComponent {
       return false;
     } 
     }
+    ngOnInit() {
+      this.hideAnimatedDiv()
+   }
 }

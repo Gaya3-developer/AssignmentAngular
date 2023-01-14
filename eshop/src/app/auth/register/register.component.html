@@ -6,57 +6,72 @@
             class="img-fluid" alt="Sample image">
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-          <form>
-         
-  <div class="row">
-    <div class="col-md-6 mb-4">
-      <div class="form-outline">
-        <label class="form-label" for="form3Example1">First name</label>
-        <input type="text" id="form3Example1" class="form-control" 
-        placeholder="Enter first name" />
-       
-      </div>
-    </div>
-    <div class="col-md-6 mb-4">
-      <div class="form-outline">
-        <label class="form-label" for="form3Example2">Last name</label>
-        <input type="text" id="form3Example2" class="form-control" 
-        placeholder="Enter  last name" />
-       
-      </div>
-    </div>
-  </div>
-
-       
-  
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-                <label class="form-label" for="form3Example3">Email address</label>
-              <input type="email" id="form3Example3" class="form-control form-control-lg"
-                placeholder="Enter a valid email address" />
+            <form #regForm="ngForm" (ngSubmit)="onSubmit(regForm)" [mustMatch]="['password', 'confirmPassword']" novalidate>
+                <div class="row">
+                  
+                    <div class="col-6 mb-3">
+                        <label class="form-label">First Name</label>
+                        <input type="text" name="firstName" ngModel #firstName="ngModel" class="form-control" [ngClass]="{ 'is-invalid': regForm.submitted && firstName.invalid }" required>
+                        <div *ngIf="regForm.submitted && firstName.errors" class="invalid-feedback">
+                            <div *ngIf="firstName.errors['required']">First Name is required</div>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" name="lastName" ngModel #lastName="ngModel" class="form-control" [ngClass]="{ 'is-invalid': regForm.submitted && lastName.invalid }" required>
+                        <div *ngIf="regForm.submitted && lastName.errors" class="invalid-feedback">
+                            <div *ngIf="lastName.errors['required']">Last Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="form-label">Date of Birth</label>
+                        <input type="date" name="dob" ngModel #dob="ngModel" class="form-control" [ngClass]="{ 'is-invalid': regForm.submitted && dob.invalid }" required pattern="^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$">
+                        <div *ngIf="regForm.submitted && dob.errors" class="invalid-feedback">
+                            <div *ngIf="dob.errors['required']">Date of Birth is required</div>
+                            <div *ngIf="dob.errors['pattern']">Date of Birth must be a valid date in the format YYYY-MM-DD</div>
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="text" name="email" ngModel #email="ngModel" class="form-control" [ngClass]="{ 'is-invalid': regForm.submitted && email.invalid }" required email>
+                        <div *ngIf="regForm.submitted && email.errors" class="invalid-feedback">
+                            <div *ngIf="email.errors['required']">Email is required</div>
+                            <div *ngIf="email.errors['email']">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" ngModel #password="ngModel" class="form-control" [ngClass]="{ 'is-invalid': regForm.submitted && password.invalid }" required minlength="6">
+                        <div *ngIf="regForm.submitted && password.errors" class="invalid-feedback">
+                            <div *ngIf="password.errors['required']">Password is required</div>
+                            <div *ngIf="password.errors['minlength']">Password must be at least 6 characters</div>
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" name="confirmPassword" ngModel #confirmPassword="ngModel" class="form-control" [ngClass]="{ 'is-invalid': regForm.submitted && confirmPassword.invalid }" required>
+                        <div *ngIf="regForm.submitted && confirmPassword.errors" class="invalid-feedback">
+                            <div *ngIf="confirmPassword.errors['required']">Confirm Password is required</div>
+                            <div *ngIf="confirmPassword.errors['mustMatch']">Passwords must match</div>
+                        </div>
+                    </div>
+                </div>
              
-            </div>
-  
-            <!-- Password input -->
-            <div class="form-outline mb-3">
-                <label class="form-label" for="form3Example4">Password</label>
-              <input type="password" id="form3Example4" class="form-control form-control-lg"
-                placeholder="Enter password" />
-            
-            </div>
-  
-  
             <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="button" class="btn btn-primary btn-lg"
-                style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
-                <div class="divider d-flex align-items-center my-4">
-                    <p class="text-center fw-bold mx-3 mb-0">Or</p>
-                  </div>
-              <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a routerLink="/login"
-                  class="link-danger">Login</a></p>
-            </div>
-  
-          </form>
+                <button type="submit" class="btn btn-primary btn-lg"
+                  style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
+                  <div class="divider d-flex align-items-center my-4">
+                      <p class="text-center fw-bold mx-3 mb-0">Or</p>
+                    </div>
+                <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a routerLink="/login"
+                    class="link-danger">Login</a></p>
+              </div>
+            </form>
+    
         </div>
       </div>
     </div>
