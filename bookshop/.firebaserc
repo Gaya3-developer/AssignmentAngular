@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "ecommerceapp-e8343"
+  },
+  "targets": {
+    "ecommerceapp-e8343": {
+      "hosting": {
+        "MyApp": [
+          "ecommerceapp-e8343"
+        ]
+      }
+    }
   }
 }

@@ -5,19 +5,29 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MustMatchDirective } from '../helpers/must-match.directive';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-
+import {
+  GoogleLoginProvider,
+  SocialLoginModule,
+  FacebookLoginProvider,
+  AmazonLoginProvider,
+  VKLoginProvider,
+  MicrosoftLoginProvider,
+  SocialAuthServiceConfig,
+} from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    MustMatchDirective
+    MustMatchDirective,
   ],
   imports: [
     CommonModule,
-    RouterModule,FormsModule,ReactiveFormsModule
+    RouterModule,FormsModule,ReactiveFormsModule,FontAwesomeModule,SocialLoginModule
   ],
+
   exports:[
     LoginComponent,
     RegisterComponent

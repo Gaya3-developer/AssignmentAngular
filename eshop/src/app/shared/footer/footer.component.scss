@@ -1,0 +1,135 @@
+@import '../../../assets/scss/config.scss';
+
+._footer {
+    background: $theme-color2;
+    color: $footer-text;
+    border-top: 4px solid $theme-color3;
+    &_section {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      ._footer_wrapper {
+        margin: 30px 0;
+        ._brand_logo {
+          margin-bottom: 20px;
+          h1 {
+            background-image: linear-gradient(
+              50deg,
+              $white,
+              $theme-color1,
+              $white
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: -25px;
+          }
+          span {
+            -webkit-text-fill-color: $theme-color3;
+          }
+        }
+        h3 {
+          color: $white;
+          text-transform: uppercase;
+          font-size: 18px;
+          margin: 0 0 30px;
+        }
+        p {
+          margin-bottom: 10px;
+        }
+        ul {
+          li {
+            display: block;
+            + li {
+              margin-top: 15px;
+            }
+            a {
+              color: $footer-text;
+              &:hover {
+                color: $theme-color1;
+              }
+            }
+            .c-icon {
+              margin-right: 15px;
+              color: $theme-color1;
+              width: 14px;
+              text-align: center;
+            }
+          }
+        }
+        ._social_icons {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          justify-self: center;
+          li {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $white;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            a {
+              .s-icon {
+                color: $grey;
+                font-size: 12px;
+                margin-right: 0;
+              }
+            }
+            & + li {
+              margin-top: 0;
+            }
+            &:nth-child(n + 2) {
+              margin-left: 10px;
+            }
+            &:hover {
+              background-color: $theme-color1;
+              -webkit-transition: all 0.3s ease;
+              transition: all 0.3s ease;
+              .s-icon {
+                color: $white !important;
+              }
+            }
+          }
+        }
+      }
+    }
+    ._copyright_footer {
+      background: $theme-color1;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      &_wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        ul {
+          li {
+            display: inline-block;
+            margin-right: 5px;
+           
+          }
+        }
+        span {
+          color: $white;
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 575px) {
+    ._footer{
+      ._copyright_footer{
+        &_wrapper{
+          display: block;
+          text-align: center;
+          margin-bottom: 45px;
+        }
+      }
+    }
+  }

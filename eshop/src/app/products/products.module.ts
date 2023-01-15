@@ -5,6 +5,7 @@ import { CreateComponent } from './create/create.component';
 import { ViewAllComponent } from './view-all/view-all.component';
 import { ViewByCategoryComponent } from './view-by-category/view-by-category.component';
 import { DetailViewComponent } from './detail-view/detail-view.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { DetailViewComponent } from './detail-view/detail-view.component';
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule,
+    ProductsRoutingModule,FontAwesomeModule
   ],
   exports:[
     CreateComponent,

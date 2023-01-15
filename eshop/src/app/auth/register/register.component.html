@@ -1,4 +1,77 @@
-<section class="vh-100">
+
+<section class="form-bg py-5">
+   
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class=" col-md-5 col-12">
+                    <div class="form-container">
+                        <h3 class="title">Create Account</h3>
+                        <ul class="social-links">
+                            <li><a href=""> <fa-icon [icon]="faFacebookF" class="f-icon"></fa-icon></a></li>
+                            <li (click)="onGoogleSignIn()"><fa-icon [icon]="faGooglePlusG" class="g-icon"></fa-icon></li>
+                        </ul>
+                        <span class="description">or use you email for registration:</span>
+                        <form class="form-horizontal" #regForm="ngForm" (ngSubmit)="addUser(regForm)" [mustMatch]="['password', 'confirmPassword']" novalidate>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Name"
+                                class="form-control"  name="name" ngModel #name="ngModel"  
+                                [ngClass]="{ 'is-invalid': (regForm.submitted && name.errors) || (name.invalid && (name.dirty || name.touched)) }" required>
+                              <div *ngIf="(regForm.submitted && name.errors) || (name.invalid && (name.dirty || name.touched))" class="invalid-feedback">
+                                    <div *ngIf="name.errors['required']">Name is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="email" placeholder="Email" ngModel #email="ngModel" class="form-control"
+                                 [ngClass]="{ 'is-invalid': (regForm.submitted && email.errors) || (email.invalid && (email.dirty || email.touched)) }" required email 
+                                 (input)="emailExists(email)">
+                                <div *ngIf="(regForm.submitted && email.errors) || (email.invalid && (email.dirty || email.touched))" class="invalid-feedback">
+                                    <div *ngIf="email.errors['required']">Email is required</div>
+                                    <div *ngIf="email.errors['email']">Email must be a valid email address</div>
+                                     <div *ngIf="email.errors['emailExists']">
+                                        Email already exists.
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" placeholder="Password" ngModel #password="ngModel" class="form-control" 
+                                [ngClass]=" { 'is-invalid':(regForm.submitted && password.errors) || (password.invalid && (password.dirty || password.touched)) }" required minlength="6">
+                                <div *ngIf="(regForm.submitted && password.errors) || (password.invalid && (password.dirty || password.touched))" class="invalid-feedback">
+                                    <div *ngIf="password.errors['required']">Password is required</div>
+                                    <div *ngIf="password.errors['minlength']">Password must be at least 6 characters</div>
+                                </div>
+                            </div>
+                         
+                            <div class="form-group">
+                                <input type="password" name="confirmPassword" placeholder="Confirm Password" ngModel #confirmPassword="ngModel" class="form-control"
+                                 [ngClass]="{ 'is-invalid': (regForm.submitted && confirmPassword.errors) || (confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)) }" required>
+                                 <div *ngIf="(regForm.submitted && confirmPassword.errors) || (confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched))" class="invalid-feedback">
+                                    <div *ngIf="confirmPassword.errors['required']">Password is required</div>
+                                    <div *ngIf="confirmPassword.errors['mustMatch']">Passwords must match</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="agreement" ngModel #agreement="ngModel" class="checkbox" 
+                                [ngClass]="{ 'is-invalid': (regForm.submitted && agreement.errors) || (agreement.invalid && (agreement.dirty || agreement.touched)) }" required>
+                                 
+                                <span class="check-label">I agree to the <a href="">Terms</a> and <a href="">Privacy Policy.</a></span>
+                                <div *ngIf="(regForm.submitted && agreement.errors) || (agreement.invalid && (agreement.dirty || agreement.touched))" class="invalid-feedback">
+                                    <div *ngIf="agreement.errors['required']">This feild is required</div>
+                    
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-normal signup">Sign up</button>
+                            <button class="btn btn-normal" routerLink="/login">Sign in</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+    </section> 
+
+   
+
+<!-- <section class="vh-100">
     <div class="container-fluid h-custom">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-9 col-lg-6 col-xl-5">
@@ -76,4 +149,4 @@
       </div>
     </div>
  
-  </section>
+  </section> -->

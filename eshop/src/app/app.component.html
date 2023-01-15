@@ -15,7 +15,7 @@
 
 <app-footer></app-footer> -->
 <!-- loader start -->
-<div class="loader-wrapper" *ngIf="isDisplayed">
+<!-- <div class="loader-wrapper" *ngIf="isDisplayed">
   <div>
     <img src="../assets/images/loader.gif" alt="loader">
   </div>
@@ -40,4 +40,17 @@
 <section *ngIf="!checkUrl()">
   <router-outlet></router-outlet>
 </section>
-<app-footer></app-footer>
+<app-footer></app-footer> -->
+
+
+<div class="loader-wrapper" *ngIf="isDisplayed">
+  <div>
+    <img src="../assets/images/loader.gif" alt="loader">
+  </div>
+</div>
+<app-header></app-header>
+<asl-google-signin-button class="mx-5"></asl-google-signin-button>
+<section>
+  <router-outlet></router-outlet>
+</section>
+<app-footer></app-footer> 
