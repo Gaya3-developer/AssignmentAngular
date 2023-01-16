@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ApiService } from '../helpers/api.service';
+import { TokenStorageService } from '../helpers/token-storage.service';
 import { HttpClient } from '@angular/common/http';
-import { User} from './user';
-import { Observable } from 'rxjs';
+import { User } from './user';
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-API_KEY:string = "AIzaSyAejjKPr6Ea6S0PmXOxCascxKk6PmMerr0"
-  constructor(private httpClient: HttpClient) { }
+API_KEY:string = "AIzaSyAmZD-F8eYNuMWClz9kYqLysNN5i8mTrkk"
 
+/*
   createUser(userBody): Observable<User>{
     const usertUrl = 'http://localhost:3000/users';
 
@@ -19,13 +24,70 @@ API_KEY:string = "AIzaSyAejjKPr6Ea6S0PmXOxCascxKk6PmMerr0"
 
     return this.httpClient.get<User[]>(productUrl); // return an observable
   }
-  googleSignIn(token){
-    return this.httpClient.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key=${this.API_KEY}`,{
-    postBody:`id_token=${token}&providerId=google.com`,
-    requestUri:'http://localhost:4200',
+
+  */
+
+  private userSubject: BehaviorSubject<any>;
+  public user: Observable<any>;
+
+  constructor(private _api: ApiService, private _token: TokenStorageService,private _http: HttpClient) {
+    this.userSubject = new BehaviorSubject<any>(this._token.getUser());
+    this.user = this.userSubject.asObservable();
+  }
+
+  getUser() {
+    console.log(this.userSubject);
+    console.log(this.userSubject.value);
+    return this.userSubject.value;
+  }
+  getAllUser(): Observable<User[]>{
+    const productUrl = 'http://localhost:3000/users';
+
+    return this._http.get<User[]>(productUrl); // return an observable
+  }
+  login(credentials: any): Observable<any> {
+    return this._api
+      .getTypeRequest(`users?email=${
+      credentials.email
+      }&password=${credentials.password}`)
+      .pipe(
+        map((res: any) => {
+          //console.log(res);
+          let user = {
+            email: credentials.email,
+            token: res.token,
+          };
+          this._token.setToken(res.token);
+          this._token.setUser(res.data[0]);
+          console.log(res);
+          this.userSubject.next(user);
+          return user;
+        })
+      );
+  }
+
+  register(user: any): Observable<any> {
+    return this._api.postTypeRequest('users', {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      password: user.password,
+      agreement: user.agreement
+    });
+  }
+
+  logout() {
+    this._token.clearStorage();
+    this.userSubject.next(null);
+  }
+  googleSignIn(idtoken){
+    return this._http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key=${this.API_KEY}`,{
+    postBody:`id_token=${idtoken}&providerId=google.com`,
+    requestUri:'https://eshop-2abdf.web.app',
     returnIdpCredential:true,
     returnSecureToken:true
   })
+  
   }
-
+  
 }

@@ -1,14 +1,14 @@
 
 <section class="form-bg py-5">
-   
+
         <div class="container">
             <div class="row justify-content-center">
                 <div class=" col-md-5 col-12">
                     <div class="form-container">
                         <h3 class="title">Create Account</h3>
                         <ul class="social-links">
-                            <li><a href=""> <fa-icon [icon]="faFacebookF" class="f-icon"></fa-icon></a></li>
-                            <li (click)="onGoogleSignIn()"><fa-icon [icon]="faGooglePlusG" class="g-icon"></fa-icon></li>
+                            <li>  <asl-google-signin-button></asl-google-signin-button></li>
+                            <li  (click)="signInWithFB()"><fa-icon [icon]="faFacebookF" class="g-icon"></fa-icon></li>
                         </ul>
                         <span class="description">or use you email for registration:</span>
                         <form class="form-horizontal" #regForm="ngForm" (ngSubmit)="addUser(regForm)" [mustMatch]="['password', 'confirmPassword']" novalidate>

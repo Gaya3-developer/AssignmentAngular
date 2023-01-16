@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { SocialUser,GoogleLoginProvider, SocialAuthService, FacebookLoginProvider,} from '@abacritt/angularx-social-login';
+import { faFacebookF, faGooglePlusG} from "@fortawesome/free-brands-svg-icons"
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,8 +12,14 @@ import { Router } from "@angular/router";
 export class LoginComponent {
   public loginForm: FormGroup;
   public submitted = false;
-
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  faFacebookF =faFacebookF;
+  faGooglePlusG=faGooglePlusG;
+  user: SocialUser | undefined;
+  GoogleLoginProvider = GoogleLoginProvider;
+  error = '';
+  constructor(private formBuilder: FormBuilder, private router: Router,
+    private loginService: AuthService,
+    private authSocialService:SocialAuthService,) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -23,19 +32,66 @@ export class LoginComponent {
         ]
       ]
     });
+    this.authSocialService.authState.subscribe((user) => {
+      console.log(user)
+      this.user = user;
+      this.loginService.googleSignIn(user.idToken).subscribe((res) => {
+  console.log(res)
+  this.router.navigate(["/"]);
+      },
+      (err) =>{
+        console.log(err)
+      }
+      )
+    });
+
+
   }
 
   get formControl() {
     return this.loginForm.controls;
   }
 
+
+  signInWithFB(): void {
+    this.authSocialService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+  signOut(): void {
+    this.authSocialService.signOut();
+  }
+  refreshGoogleToken(): void {
+    this.authSocialService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
+  }
+
   onLogin(): void {
     // console.log(this.loginForm.value);
+    this.error = '';
     this.submitted = true;
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
+      this.loginService
+      .login({ email: this.loginForm.value.email, password: this.loginForm.value.password })
+      .subscribe(
+        (res) => {
+         console.log(res)
+         if(res.length===0){
+          this.error = "User not found"
+         }
+         else{
+         // this.router.navigate(['/']);
+         }
+          
+        },
+        (err) => {
+          console.log(err);
+         // this.error = err.error.message;
+         
+        }
+      );
+     /* console.log(this.loginForm.value);
       localStorage.setItem("user-Data", JSON.stringify(this.loginForm.value));
-      this.router.navigate(["/"]);
+      this.router.navigate(["/"]);*/
     }
+
+  
   }
 }

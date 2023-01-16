@@ -3,11 +3,8 @@ import { NgForm,NgModel } from '@angular/forms';
 import { faFacebookF, faGooglePlusG} from "@fortawesome/free-brands-svg-icons"
 import { AuthService } from '../auth.service';
 import { User} from '../user';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SocialUser,GoogleLoginProvider, SocialAuthService, FacebookLoginProvider,
-  AmazonLoginProvider,
-  VKLoginProvider,
-  MicrosoftLoginProvider, } from '@abacritt/angularx-social-login';
+import { SocialUser,GoogleLoginProvider, SocialAuthService, FacebookLoginProvider,} from '@abacritt/angularx-social-login';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,25 +13,37 @@ import { SocialUser,GoogleLoginProvider, SocialAuthService, FacebookLoginProvide
 export class RegisterComponent {
   faFacebookF =faFacebookF;
   faGooglePlusG=faGooglePlusG;
-
-
-
-
-  constructor(private registerService: AuthService,
-    private authSocialService:SocialAuthService
-  ) { }
   userList: User[];
   existingEmailsList: any = [];
   emailsList: any = [];
- /* onSubmit(regForm: NgForm) {
-    // stop here if form is invalid
-  
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(regForm.value, null, 4));
-}*/
+  user: SocialUser | undefined;
+  GoogleLoginProvider = GoogleLoginProvider;
+userId:string;
+errorMessage = '';
+
+  constructor(private registerService: AuthService,
+    private authSocialService:SocialAuthService,
+    private router:Router
+  ) { }
+
+
 
 ngOnInit(): void {
- 
+  this.authSocialService.authState.subscribe((user) => {
+    this.user = user;
+    this.registerService.googleSignIn(user.idToken).subscribe((res) => {
+console.log(res)
+this.router.navigate(["/"]);
+    },
+    (err) =>{
+      console.log(err)
+    }
+    )
+  });
   this.registerService.getAllUser().subscribe(  data => {
+    console.log(data.length)
+    this.userId= data[data.length - 1].id;
+
     for (let item in data) {
       this.emailsList.push(data[item].email);
     }
@@ -56,11 +65,12 @@ emailExists(control:NgModel)
 }
 
 addUser(regForm: NgForm){
+  this.errorMessage = '';
   if (regForm.invalid) {
     return;
 }
-  let newProduct = {
-      id:  this.userList['id'] + 1,
+ /* let newProduct = {
+      id:  this.userId + 1,
       name: regForm.value.name,
       email: regForm.value.email,
       password: regForm.value.password,
@@ -68,19 +78,43 @@ addUser(regForm: NgForm){
   }
   this.registerService.createUser(newProduct).subscribe(data => {
     console.log(data);
-  });
-
+    this.router.navigate(['/login']);
+  });*/
+  this.registerService
+  .register({
+    id:  this.userId + 1,
+      name: regForm.value.name,
+      email: regForm.value.email,
+      password: regForm.value.password,
+      agreement: regForm.value.agreement
+  })
+  .subscribe(
+    (res) => {
+      console.log(res);
+      this.router.navigate(['/login']);
+    },
+    (err) => {
+      this.errorMessage = err.error.message;
+    }
+  );
 }
-
-
+/*
 onGoogleSignIn(){
+  console.log("hello1")
   this.authSocialService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
     (res) => {
       console.log(res)
     }
   )
+}*/
+signInWithFB(): void {
+  this.authSocialService.signIn(FacebookLoginProvider.PROVIDER_ID);
 }
-
-
+signOut(): void {
+  this.authSocialService.signOut();
+}
+refreshGoogleToken(): void {
+  this.authSocialService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
+}
 
 }

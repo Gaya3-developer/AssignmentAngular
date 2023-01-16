@@ -126,32 +126,13 @@
       "agreement": true
     },
     {
-      "id": 12,
-      "name": "www",
-      "email": "aaa@gmail.com",
-      "password": "123456",
-      "agreement": true
-    },
-    {
-      "id": 13,
-      "name": "www",
-      "email": "g@gmail.com",
-      "password": "123456",
-      "agreement": true
-    },
-    {
-      "id": 14,
-      "name": "www",
-      "email": "aaa@gmail.com",
-      "password": "123456",
-      "agreement": true
-    },
-    {
       "id": 15,
       "name": "sxsxsx",
       "email": "g@gmail.com",
       "password": "123456",
       "agreement": true
     }
+   
+   
   ]
 }
