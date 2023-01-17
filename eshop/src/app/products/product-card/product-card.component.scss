@@ -140,3 +140,14 @@ $background-color_2: transparent;
 		}
 	}
 }
+
+
+button:disabled {
+	cursor: not-allowed;
+	pointer-events: all;
+	  background:grey !important;
+	  border:grey !important;
+	  &:hover{
+		color:white !important;
+	  }
+  }

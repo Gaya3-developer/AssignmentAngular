@@ -5,7 +5,7 @@
     <li class="list-group-item" routerLinkActive="active"><a routerLink="/products/create">Add new product</a></li>
     <li class="list-group-item" routerLinkActive="active" *ngFor="let cat of categoryList">
       <a routerLink="/products/category/{{cat.id}}" >
-          {{ cat.categoryName }}
+          {{ cat.title }}
       </a>
     </li>
   </ul>

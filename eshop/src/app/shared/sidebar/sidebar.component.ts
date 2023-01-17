@@ -11,8 +11,8 @@ export class SidebarComponent {
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
-    this.categoryService.getAllCategory().subscribe(data => {
+   /* this.categoryService.getAllCategory().subscribe(data => {
       this.categoryList = data;
-    });
+    });*/
   }
 }

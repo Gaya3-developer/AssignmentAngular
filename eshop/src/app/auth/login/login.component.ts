@@ -72,18 +72,12 @@ export class LoginComponent {
       .login({ email: this.loginForm.value.email, password: this.loginForm.value.password })
       .subscribe(
         (res) => {
-         console.log(res)
-         if(res.length===0){
-          this.error = "User not found"
-         }
-         else{
-         // this.router.navigate(['/']);
-         }
           
+          this.router.navigate(['/']);
         },
         (err) => {
           console.log(err);
-         // this.error = err.error.message;
+          this.error = err.error.message;
          
         }
       );

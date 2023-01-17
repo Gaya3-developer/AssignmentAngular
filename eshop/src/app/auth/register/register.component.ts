@@ -80,6 +80,7 @@ addUser(regForm: NgForm){
     console.log(data);
     this.router.navigate(['/login']);
   });*/
+
   this.registerService
   .register({
     id:  this.userId + 1,

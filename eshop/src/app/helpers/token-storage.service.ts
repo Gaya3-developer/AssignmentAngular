@@ -23,6 +23,7 @@ export class TokenStorageService {
   }
 
   setUser(user): void {
+    console.log(user)
     sessionStorage.removeItem(this.USER_KEY);
     sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
   }

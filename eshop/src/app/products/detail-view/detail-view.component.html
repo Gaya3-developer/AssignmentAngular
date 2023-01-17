@@ -4,11 +4,11 @@
           <div class="col">
               <div class="breadcrumb-contain">
                   <div>
-                      <h2>product</h2>
+                      <h2>product view</h2>
                       <ul>
-                          <li><a href="index.html">home</a></li>
+                          <li><a routerLink="/products/category/{{productDetails.cat_id}}">{{productDetails.category}}</a></li>
                           <li> <fa-icon [icon]="faAngleDoubleRight" class="angle-right-icon"></fa-icon></li>
-                          <li><a href="javascript:void(0)">product</a></li>
+                          <li><a routerLink="/products">{{productDetails.title}}</a></li>
                       </ul>
                   </div>
               </div>
@@ -22,15 +22,15 @@
       <div class="custom-container">
           <div class="row">
               <div class="col-lg-5">
-                <img src="{{productDetails.productImg}}" alt="" class="img-fluid  image_zoom_cls-0" />
+                <img src="{{productDetails.image}}" alt="" class="img-fluid  image_zoom_cls-0" />
               </div>
               <div class="col-lg-7 rtl-text">
                   <div class="product-right">                                 
                                 <div class="pro-group">
-                                  <h2>{{ productDetails.productName }}</h2>
+                                  <h2>{{ productDetails.title }}</h2>
                                   <ul class="pro-price">
                                     <li>${{ productDetails.price }}</li>
-                                    <li><span>mrp $140</span></li>
+                                    <li><span>${{ productDetails.price + 100 }}</span></li>
                                     <li>50% off</li>
                                   </ul>                                   
                                   <div class="revieu-box">                                     
@@ -41,7 +41,7 @@
                                       <li> <fa-icon [icon]="faStar" class="star-icon"></fa-icon></li>
                                       <li><i class="fa fa-star-o"></i></li>
                                     </ul>
-                                    <a href="review.html"><span>(6 reviews)</span></a>
+                                    <a><span>(6 reviews)</span></a>
                                   </div> 
                                   <ul class="best-seller">
                                     <li>
@@ -57,7 +57,7 @@
                                 <div class="pro-group">
                                   <h6 class="product-title">hurry  up ! Deal end in :</h6>
                                     <div class="timer">
-                                        <p id="demo">EXPIRED</p>
+                                        <p id="demo">{{ productDetails.quantity === 0 ? "Out of stock" : "In stock" }}</p>
                                     </div>
                                 </div>
                                 <div id="selectSize" class="pro-group addeffect-section product-description border-product mb-0">
@@ -66,14 +66,16 @@
                                     <h6 class="product-title">quantity</h6>
                                     <div class="qty-box">
                                       <div class="input-group">
-                                        <button class="qty-minus">-</button>
-                                        <input class="qty-adj form-control" type="number" value="1">
-                                        <button class="qty-plus">+</button>
+                                        <button class="qty-minus" (click)="removeQty(quantityValue.value)">-</button>
+                                        <input class="qty-adj form-control" type="number" value="{{qty}}" [(ngModel)]="qty" #quantityValue >
+                                        <button class="qty-plus" (click)="addQty(quantityValue.value)">+</button>
                                       </div>
                                     </div>
                                     <div class="product-buttons">
-                                      <a href="javascript:void(0)" id="cartEffect" class="btn cart-btn btn-normal tooltip-top" data-tippy-content="Add to cart">
-                                        <i class="fa fa-shopping-cart"></i>
+                                      <a  id="cartEffect" class="btn cart-btn btn-normal tooltip-top" data-tippy-content="Add to cart"
+                                      (click)="addToCart()"
+                                      >
+                      <fa-icon [icon]="faCartShopping" class="angle-right-icon"></fa-icon>
                                         add to cart
                                       </a>
                                    

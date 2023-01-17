@@ -42,14 +42,21 @@
         <div class="col-xl-5 col-md-3 col-sm-6">
           <div class="_main_header_wrapper_right">
             <div class="_contact_info">
-              <fa-icon [icon]="faUser"></fa-icon><span>Login
+              <fa-icon [icon]="faUser"></fa-icon><span routerLink="/login" *ngIf="!isLoggedIn">
+                login
+              </span>
+              <span (click)="logout()" routerLink="/login" *ngIf="isLoggedIn">
+                my account
               </span>
             
             </div>
             <div class="_contact_info">
-              <fa-icon [icon]="faUserPlus"></fa-icon><span>Register
+              <fa-icon [icon]="faUserPlus"></fa-icon>
+              <span routerLink="/register" *ngIf="!isLoggedIn"> Register
               </span>
-            
+              <span (click)="logout()" routerLink="/login" *ngIf="isLoggedIn">
+                logout
+              </span>
             </div>
            
           </div>
@@ -94,7 +101,7 @@
                   </a>
                 </li>
                 <li class="mobile-cart item-count">
-                  <a href="javascript:void(0)">
+                  <a routerLink="/cart">
                     <div class="cart-block">
                       <fa-icon [icon]="faCartPlus" class="cart"></fa-icon>
                       <div class="cart-item">
@@ -104,7 +111,7 @@
                     </div>
                   </a>
                   <div class="item-count-contain">
-                    3
+                    {{ cartData.products.length }}
                   </div>
                 </li>
                 <li class="mobile-setting">
@@ -154,34 +161,17 @@
                   <li>
                     <div class="mobile-back text-right" (click)="menuClose()">Back<i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                   </li>
-                  <li>
-                    <a class="dark-menu-item" href="javascript:void(0)">Home</a>
+                  <li routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}">
+                    <a class="list-group-item" routerLink="/">Home</a>
                   
                   </li>
-                  <li>
-                    <a class="dark-menu-item" href="javascript:void(0)">Hot Deals</a>
-                  
+                
+                  <li class="list-group-item"  *ngFor="let cat of categoryList"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a  routerLink="/products/category/{{cat.id}}"   >
+                        {{ cat.title }}
+                    </a>
                   </li>
-                  <li ><a  class="dark-menu-item" href="javascript:void(0)">Categories
-                  </a>
-                 
-                  </li>
-                  <li >
-                    <a  class="dark-menu-item" href="javascript:void(0)">Laptops</a>
-                 
-                  </li>
-                  <li >
-                    <a  class="dark-menu-item" href="javascript:void(0)">Smart Phones</a>
-                 
-                  </li>
-                  <li>
-                    <a  class="dark-menu-item" href="javascript:void(0)">Cameras</a>
-                 
-                  </li>
-                  <li >
-                    <a  class="dark-menu-item" href="javascript:void(0)">Accessories</a>
-                 
-                  </li>
+             
                  
                 </ul>
               </nav>

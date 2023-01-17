@@ -36,7 +36,7 @@ API_KEY:string = "AIzaSyAmZD-F8eYNuMWClz9kYqLysNN5i8mTrkk"
   }
 
   getUser() {
-    console.log(this.userSubject);
+    console.log("hit",this.userSubject);
     console.log(this.userSubject.value);
     return this.userSubject.value;
   }
@@ -45,14 +45,16 @@ API_KEY:string = "AIzaSyAmZD-F8eYNuMWClz9kYqLysNN5i8mTrkk"
 
     return this._http.get<User[]>(productUrl); // return an observable
   }
+  
   login(credentials: any): Observable<any> {
     return this._api
-      .getTypeRequest(`users?email=${
-      credentials.email
-      }&password=${credentials.password}`)
+      .postTypeRequest('auth/login', {
+        email: credentials.email,
+        password: credentials.password,
+      })
       .pipe(
         map((res: any) => {
-          //console.log(res);
+          console.log(res);
           let user = {
             email: credentials.email,
             token: res.token,
@@ -65,21 +67,17 @@ API_KEY:string = "AIzaSyAmZD-F8eYNuMWClz9kYqLysNN5i8mTrkk"
         })
       );
   }
-
+ 
   register(user: any): Observable<any> {
-    return this._api.postTypeRequest('users', {
-      id: user.id,
-      name: user.name,
+    return this._api.postTypeRequest('auth/register', {
+      username: user.username,
+      fullName: user.name,
       email: user.email,
       password: user.password,
-      agreement: user.agreement
     });
   }
 
-  logout() {
-    this._token.clearStorage();
-    this.userSubject.next(null);
-  }
+
   googleSignIn(idtoken){
     return this._http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key=${this.API_KEY}`,{
     postBody:`id_token=${idtoken}&providerId=google.com`,
@@ -89,5 +87,8 @@ API_KEY:string = "AIzaSyAmZD-F8eYNuMWClz9kYqLysNN5i8mTrkk"
   })
   
   }
-  
+  logout() {
+    this._token.clearStorage();
+    this.userSubject.next(null);
+  }
 }

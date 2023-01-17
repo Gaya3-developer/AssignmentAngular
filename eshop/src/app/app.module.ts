@@ -13,14 +13,23 @@ import {
   FacebookLoginProvider,
   SocialAuthServiceConfig,
 } from '@abacritt/angularx-social-login';
+import { CartComponent } from './cart/cart.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { OrdersComponent } from './orders/orders.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
+    CartComponent,
+    CheckoutComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,SharedModule,AuthModule,SlickCarouselModule,HomeModule,SocialLoginModule
+    FormsModule,
+    AppRoutingModule,SharedModule,AuthModule,SlickCarouselModule,HomeModule,SocialLoginModule,FontAwesomeModule
   ],
   providers: [
     {

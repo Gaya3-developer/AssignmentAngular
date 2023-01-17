@@ -6,9 +6,9 @@
           <div>
             <h2>product</h2>
             <ul>
-              <li><a href="index.html">home</a></li>
+              <li><a routerLink="/">home</a></li>
               <li> <fa-icon [icon]="faAngleDoubleRight" class="angle-right-icon"></fa-icon></li>
-              <li><a href="javascript:void(0)">product</a></li>
+              <li><a routerLink="/products">product</a></li>
             </ul>
           </div>
         </div>
@@ -27,43 +27,21 @@
          
           <div class="product-wrapper-grid product">
             <div class="row">
-              <div class="col-xl-3 col-md-4 col-6  col-grid-box " *ngFor="let product of productList"> 
-                <div class="product-box">
-                  <div class="product-imgbox">
-                  
-                    <div class="product-back">
-                      <a href="product-page(left-sidebar).html"> <img src="https://themes.pixelstrap.com/bigdeal/assets/images/layout-4/product/a1.jpg" class="img-fluid  " alt="product"> </a>
-                    </div>
-                    
-                  </div>
-                  <div class="product-detail product-detail2 ">
-                    <ul>
-                      <li> <fa-icon [icon]="faStar" class="star-icon"></fa-icon></li>
-                      <li> <fa-icon [icon]="faStar" class="star-icon"></fa-icon></li>
-                      <li> <fa-icon [icon]="faStar" class="star-icon"></fa-icon></li>
-                      <li> <fa-icon [icon]="faStar" class="star-icon"></fa-icon></li>
-                      <li> <fa-icon [icon]="faStar" class="star-icon"></fa-icon></li>
-                    </ul>
-                    <a href="product-page(left-sidebar).html" tabindex="0">
-                      <h3>{{ product.productName }}</h3>
-                    </a>
-                    <h5>
-                      ${{ product.price }}
-                      <span>$60</span>
-                    </h5>
-                    <button class="tooltip-top add-cartnoty" data-tippy-content="Add to cart" tabindex="0">
-                      add to cart
-                    </button>
-                  </div>
-                
-                </div>
-              </div>
-           
-           
-          
-            
-        
-           
+              <div class="col-xl-3 col-md-4 col-6  col-grid-box "  *ngFor="let n of productList"> 
+              <app-product-card
+             
+              [id]="n.id"
+              [title]="n.title"
+              [image]="n.image"
+              [price]="n.price"
+              [short_desc]="n.short_desc"
+              [category]="n.category"
+              [quantity]="n.quantity"
+      
+            >
+
+            </app-product-card>
+          </div>
             
             </div>
           </div>
