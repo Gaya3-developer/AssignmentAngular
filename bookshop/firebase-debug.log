@@ -1,0 +1,38 @@
+[debug] [2023-01-15T11:45:37.680Z] ----------------------------------------------------------------------
+[debug] [2023-01-15T11:45:37.683Z] Command:       /usr/bin/node /usr/bin/firebase serve
+[debug] [2023-01-15T11:45:37.684Z] CLI Version:   11.19.0
+[debug] [2023-01-15T11:45:37.684Z] Platform:      linux
+[debug] [2023-01-15T11:45:37.684Z] Node Version:  v16.19.0
+[debug] [2023-01-15T11:45:37.685Z] Time:          Sun Jan 15 2023 17:15:37 GMT+0530 (India Standard Time)
+[debug] [2023-01-15T11:45:37.685Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-01-15T11:45:37.953Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-01-15T11:45:37.954Z] > authorizing via signed-in user (gayathrikbhat9@gmail.com)
+[debug] [2023-01-15T11:45:37.954Z] [iam] checking project ecommerceapp-e8343 for permissions ["firebase.projects.get"]
+[debug] [2023-01-15T11:45:37.957Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/ecommerceapp-e8343:testIamPermissions [none]
+[debug] [2023-01-15T11:45:37.958Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/ecommerceapp-e8343:testIamPermissions x-goog-quota-user=projects/ecommerceapp-e8343
+[debug] [2023-01-15T11:45:37.958Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ecommerceapp-e8343:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-01-15T11:45:39.312Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/ecommerceapp-e8343:testIamPermissions 200
+[debug] [2023-01-15T11:45:39.313Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ecommerceapp-e8343:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-01-15T11:45:39.314Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ecommerceapp-e8343 [none]
+[debug] [2023-01-15T11:45:40.024Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ecommerceapp-e8343 200
+[debug] [2023-01-15T11:45:40.025Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ecommerceapp-e8343 {"projectId":"ecommerceapp-e8343","projectNumber":"947108113528","displayName":"ecommerceapp","name":"projects/ecommerceapp-e8343","resources":{"hostingSite":"ecommerceapp-e8343"},"state":"ACTIVE","etag":"1_ab521857-b7e9-4963-ba82-e0200ef8b719"}
+[info] 
+[info] === Serving from '/home/user/Desktop/AssignmentAngular/bookshop'...
+[info] 
+[debug] [2023-01-15T11:45:40.030Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/ecommerceapp-e8343/sites 
+[debug] [2023-01-15T11:45:40.961Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/ecommerceapp-e8343/sites 200
+[debug] [2023-01-15T11:45:40.961Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/ecommerceapp-e8343/sites {"sites":[{"name":"projects/ecommerceapp-e8343/sites/ecommerceapp-e8343","defaultUrl":"https://ecommerceapp-e8343.web.app","appId":"1:947108113528:web:e664e2b6b91c30bf2c918d","type":"DEFAULT_SITE"}]}
+[debug] [2023-01-15T11:45:40.962Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ecommerceapp-e8343/webApps/1:947108113528:web:e664e2b6b91c30bf2c918d/config [none]
+[debug] [2023-01-15T11:45:42.484Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ecommerceapp-e8343/webApps/1:947108113528:web:e664e2b6b91c30bf2c918d/config 200
+[debug] [2023-01-15T11:45:42.484Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ecommerceapp-e8343/webApps/1:947108113528:web:e664e2b6b91c30bf2c918d/config {"projectId":"ecommerceapp-e8343","appId":"1:947108113528:web:e664e2b6b91c30bf2c918d","storageBucket":"ecommerceapp-e8343.appspot.com","apiKey":"AIzaSyAejjKPr6Ea6S0PmXOxCascxKk6PmMerr0","authDomain":"ecommerceapp-e8343.firebaseapp.com","messagingSenderId":"947108113528"}
+[debug] [2023-01-15T11:45:42.494Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ecommerceapp-e8343 [none]
+[debug] [2023-01-15T11:45:43.183Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ecommerceapp-e8343 200
+[debug] [2023-01-15T11:45:43.183Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ecommerceapp-e8343 {"projectId":"ecommerceapp-e8343","projectNumber":"947108113528","displayName":"ecommerceapp","name":"projects/ecommerceapp-e8343","resources":{"hostingSite":"ecommerceapp-e8343"},"state":"ACTIVE","etag":"1_ab521857-b7e9-4963-ba82-e0200ef8b719"}
+[info] i  hosting[ecommerceapp-e8343]: Serving hosting files from: dist/my-app {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist/my-app\u001b[22m"}}
+[info] ✔  hosting[ecommerceapp-e8343]: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[info] i  hosting: 127.0.0.1 - - [15/Jan/2023:11:46:08 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [15/Jan/2023:11:46:08 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [15/Jan/2023:11:46:09 +0000] "GET /runtime.64248f028ac7b239.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [15/Jan/2023:11:46:09 +0000] \"GET /runtime.64248f028ac7b239.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [15/Jan/2023:11:46:09 +0000] "GET /polyfills.d898c9875241bba2.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [15/Jan/2023:11:46:09 +0000] \"GET /polyfills.d898c9875241bba2.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [15/Jan/2023:11:46:09 +0000] "GET /main.f252f1fc809ef415.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [15/Jan/2023:11:46:09 +0000] \"GET /main.f252f1fc809ef415.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [15/Jan/2023:11:46:09 +0000] "GET /styles.cab43f360c41a2e2.css HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [15/Jan/2023:11:46:09 +0000] \"GET /styles.cab43f360c41a2e2.css HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36\""}}

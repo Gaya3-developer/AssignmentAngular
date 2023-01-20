@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class AppModule {}","map":{"version":3,"mappings":"AAAA,OAAM,MAAOA,SAAS","names":["AppModule"],"sourceRoot":"","sources":["/home/user/Desktop/angProject/myApp/src/app/app.module.ts"],"sourcesContent":["export class AppModule{\n    \n}"]},"metadata":{},"sourceType":"module","externalDependencies":[]}
