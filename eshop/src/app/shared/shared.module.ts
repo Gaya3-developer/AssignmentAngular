@@ -5,11 +5,11 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
+import { FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
-    CommonModule,RouterModule
+    CommonModule,RouterModule,FontAwesomeModule
   ],
   declarations: [ HeaderComponent,FooterComponent, SidebarComponent, PageNotFoundComponent ],
   exports: [
@@ -17,4 +17,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ]
 })
 
-export class SharedModule { }
+export class SharedModule { 
+ 
+}

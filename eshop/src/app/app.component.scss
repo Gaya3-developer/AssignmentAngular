@@ -1,5 +1,6 @@
+@import '../assets/scss/config.scss';
 .loader-wrapper {
-    background-color: #fff;
+    background-color: $white;
     margin: 0;
     height: 100vh;
     width: 100vw;

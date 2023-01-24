@@ -1,25 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsRoutingModule } from './products-routing.module';
-import { CreateComponent } from './create/create.component';
 import { ViewAllComponent } from './view-all/view-all.component';
 import { ViewByCategoryComponent } from './view-by-category/view-by-category.component';
 import { DetailViewComponent } from './detail-view/detail-view.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    CreateComponent,
     ViewAllComponent,
     ViewByCategoryComponent,
-    DetailViewComponent
+    DetailViewComponent,
+    ProductCardComponent
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule,
+    ProductsRoutingModule,FontAwesomeModule,FormsModule
   ],
   exports:[
-    CreateComponent,
     ViewAllComponent
   ]
 })

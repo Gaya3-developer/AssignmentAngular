@@ -94,6 +94,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "MyApp:build:production",
+            "firebaseProject": "ecommerceapp-e8343",
+            "firebaseHostingSite": "ecommerceapp-e8343"
+          }
         }
       }
     }
